@@ -19,6 +19,7 @@ object Scabuster {
 
   def main(args: Array[String]): Unit = {
     if (args.length == 0) {
+      print_banner()
       print_help()
       System.exit(0)
     }
