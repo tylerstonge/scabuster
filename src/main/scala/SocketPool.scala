@@ -1,4 +1,4 @@
-package dr0pkick.pentest
+package dr0pkick.pentest.scabuster
 
 import java.net.{InetAddress, Socket}
 import java.util.concurrent.{BlockingQueue, LinkedBlockingQueue}

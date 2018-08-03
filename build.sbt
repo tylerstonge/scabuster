@@ -1,6 +1,5 @@
-name := "dr0pkick.pentest.Scabuster"
+name := "scabuster"
 
 version := "1.0"
 
 scalaVersion := "2.12.1"
-        

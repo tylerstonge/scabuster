@@ -1,4 +1,4 @@
-package dr0pkick.pentest
+package dr0pkick.pentest.scabuster
 
 import java.io.File
 import java.util.concurrent.{ExecutorService, TimeUnit}
@@ -20,7 +20,7 @@ object Scabuster {
   def main(args: Array[String]): Unit = {
     if (args.length == 0) {
       print_help()
-      System.exit(1)
+      System.exit(0)
     }
     // parse all arguments
     args.foreach {
@@ -38,8 +38,9 @@ object Scabuster {
   def execute(): Unit = {
     socketPool.openSockets()
     val file = Source.fromFile(this.list)
+    Requester.configure(this.url, this.requestMethod, this.codes, this.socketPool)
     for (line <- file.getLines()) {
-      this.threadPool.submit(new Requester(this.url, line, this.requestMethod, this.codes, this.socketPool))
+      this.threadPool.submit(new Requester(line))
     }
     this.threadPool.shutdown()
     this.threadPool.awaitTermination(Long.MaxValue, TimeUnit.NANOSECONDS)
